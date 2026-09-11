@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Humila's NEET Preparation Hub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0b1120;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #243047;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .logo span {
+            color: #a78bfa;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid #334155;
+            color: #cbd5e1;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: #1e293b;
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 7%;
+            background:
+                radial-gradient(circle at top right, #172554, transparent 35%),
+                radial-gradient(circle at bottom left, #312e81, transparent 30%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 14px;
+            background: #172554;
+            border: 1px solid #2563eb;
+            color: #60a5fa;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            max-width: 650px;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            border: 1px solid #334155;
+            color: white;
+            background: #111827;
+        }
+
+        .secondary:hover {
+            background: #1e293b;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 75px 7%;
+        }
+
+        .section-title {
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #94a3b8;
+        }
+
+        /* DASHBOARD */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .stat {
+            background: #111827;
+            border: 1px solid #243047;
+            border-radius: 15px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .stat:hover {
+            border-color: #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        .stat h3 {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        /* SUBJECTS */
+        .subjects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .subject {
+            background: #111827;
+            border: 1px solid #243047;
+            border-radius: 16px;
+            padding: 30px;
+            transition: 0.25s;
+        }
+
+        .subject:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .subject-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .subject h3 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .subject p {
+            color: #94a3b8;
+            margin-bottom: 18px;
+        }
+
+        .chapter {
+            background: #0b1120;
+            padding: 9px 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+            color: #cbd5e1;
+            font-size: 14px;
+            border-left: 3px solid #38bdf8;
+        }
+
+        /* STUDY PLANNER */
+        .planner {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #243047;
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .card h3 {
+            margin-bottom: 18px;
+        }
+
+        .task-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .task-input input {
+            flex: 1;
+            padding: 13px;
+            background: #0b1120;
+            border: 1px solid #334155;
+            color: white;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .task-input input:focus {
+            border-color: #38bdf8;
+        }
+
+        .task-input button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .task-input button:hover {
+            background: #1d4ed8;
+        }
+
+        #taskList {
+            list-style: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        #taskList li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0b1120;
+            border: 1px solid #243047;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        #taskList li button {
+            background: transparent;
+            border: none;
+            color: #f87171;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+
+        #taskList li button:hover {
+            color: #ef4444;
+            transform: scale(1.2);
+        }
+
+        /* TIMER */
+        .timer {
+            text-align: center;
+        }
+
+        #timerDisplay {
+            font-size: 55px;
+            font-weight: bold;
+            color: #38bdf8;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .timer-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .timer-buttons button {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .timer-buttons button:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+        }
+
+        /* PROGRESS */
+        .progress-box {
+            margin-bottom: 25px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .progress-label span:last-child {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #1e293b;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #2563eb, #38bdf8);
+            transition: width 0.5s ease;
+        }
+
+        .progress-control {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .progress-control input {
+            width: 100%;
+            padding: 10px;
+            background: #0b1120;
+            border: 1px solid #334155;
+            color: white;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        .progress-control input:focus {
+            border-color: #38bdf8;
+        }
+
+        /* NOTES */
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            background: #0b1120;
+            border: 1px solid #334155;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            resize: vertical;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .save-note {
+            margin-top: 10px;
+            background: #2563eb;
+            color: white;
+            padding: 11px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .save-note:hover {
+            background: #1d4ed8;
+        }
+
+        /* MOTIVATION */
+        .motivation {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #172554, #312e81);
+            border-radius: 20px;
+        }
+
+        .motivation h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .motivation p {
+            color: #dbeafe;
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 30px 7%;
+            text-align: center;
+            border-top: 1px solid #243047;
+            color: #64748b;
+        }
+
+        footer strong {
+            color: #38bdf8;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .subjects {
+                grid-template-columns: 1fr;
+            }
+
+            .planner {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+
+        @media (max-width: 550px) {
+            section {
+                padding: 55px 5%;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 50px 5%;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">Humila<span>NEET</span></div>
+
+    <ul>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#subjects">Subjects</a></li>
+        <li><a href="#planner">Planner</a></li>
+        <li><a href="#progress">Progress</a></li>
+        <li><a href="#notes">Notes</a></li>
+    </ul>
+
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">🌙</button>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="badge">🎯 Humila's NEET Preparation Hub</div>
+
+        <h1>
+            Study smart.<br>
+            Stay consistent.<br>
+            <span>Crack NEET.</span>
+        </h1>
+
+        <p>
+            A personal preparation dashboard designed to help you organize your NEET
+            preparation, track progress, complete daily tasks and stay consistent.
+        </p>
+
+        <div class="buttons">
+            <a href="#planner" class="btn primary">Start Today's Study</a>
+            <a href="#subjects" class="btn secondary">Explore Subjects</a>
+        </div>
+    </div>
+</header>
+
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+    <div class="section-title">
+        <h2>📊 Today's Dashboard</h2>
+        <p>Keep an eye on the most important numbers.</p>
+    </div>
+
+    <div class="dashboard">
+        <div class="stat">
+            <h3>Tasks Completed</h3>
+            <div class="stat-number" id="completedTasks">0</div>
+        </div>
+
+        <div class="stat">
+            <h3>Study Sessions</h3>
+            <div class="stat-number" id="studySessions">0</div>
+        </div>
+
+        <div class="stat">
+            <h3>Biology Progress</h3>
+            <div class="stat-number" id="bioProgress">0%</div>
+        </div>
+
+        <div class="stat">
+            <h3>Overall Progress</h3>
+            <div class="stat-number" id="overallProgress">0%</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- SUBJECTS -->
+<section id="subjects">
+    <div class="section-title">
+        <h2>📚 NEET Subjects</h2>
+        <p>Organize preparation around the three core subjects.</p>
+    </div>
+
+    <div class="subjects">
+        <div class="subject">
+            <div class="subject-icon">⚡</div>
+            <h3>Physics</h3>
+            <p>Build concepts first, then practice numerical problems.</p>
+            <div class="chapter">Mechanics</div>
+            <div class="chapter">Thermodynamics</div>
+            <div class="chapter">Current Electricity</div>
+            <div class="chapter">Modern Physics</div>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🧪</div>
+            <h3>Chemistry</h3>
+            <p>Combine concepts, reactions, formulas and regular revision.</p>
+            <div class="chapter">Physical Chemistry</div>
+            <div class="chapter">Organic Chemistry</div>
+            <div class="chapter">Inorganic Chemistry</div>
+            <div class="chapter">NCERT Revision</div>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🧬</div>
+            <h3>Biology</h3>
+            <p>Focus strongly on NCERT, diagrams, facts and repeated revision.</p>
+            <div class="chapter">Human Physiology</div>
+            <div class="chapter">Genetics</div>
+            <div class="chapter">Ecology</div>
+            <div class="chapter">Cell Biology</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- PLANNER -->
+<section id="planner">
+    <div class="section-title">
+        <h2>🎯 Today's Study Planner</h2>
+        <p>Add the tasks that need to be completed today.</p>
+    </div>
+
+    <div class="planner">
+        <div class="card">
+            <h3>✅ Study Tasks</h3>
+
+            <div class="task-input">
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Example: Complete 30 Physics questions"
+                >
+                <button onclick="addTask()">Add</button>
+            </div>
+
+            <ul id="taskList"></ul>
+        </div>
+
+        <div class="card timer">
+            <h3>⏱️ Focus Timer</h3>
+            <p>Use focused sessions instead of studying endlessly without a plan.</p>
+
+            <div id="timerDisplay">25:00</div>
+
+            <div class="timer-buttons">
+                <button onclick="startTimer()">Start</button>
+                <button onclick="pauseTimer()">Pause</button>
+                <button onclick="resetTimer()">Reset</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- PROGRESS -->
+<section id="progress">
+    <div class="section-title">
+        <h2>📈 Preparation Progress</h2>
+        <p>Update progress as chapters are completed.</p>
+    </div>
+
+    <div class="card">
+        <div class="progress-box">
+            <div class="progress-label">
+                <span>Physics</span>
+                <span id="physicsValue">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="physicsBar"></div>
+            </div>
+            <div class="progress-control">
+                <input type="number" id="physicsInput" min="0" max="100" placeholder="Enter percentage">
+                <button class="save-note" onclick="updateProgress('physics')">Update</button>
+            </div>
+        </div>
+
+        <div class="progress-box">
+            <div class="progress-label">
+                <span>Chemistry</span>
+                <span id="chemistryValue">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="chemistryBar"></div>
+            </div>
+            <div class="progress-control">
+                <input type="number" id="chemistryInput" min="0" max="100" placeholder="Enter percentage">
+                <button class="save-note" onclick="updateProgress('chemistry')">Update</button>
+            </div>
+        </div>
+
+        <div class="progress-box">
+            <div class="progress-label">
+                <span>Biology</span>
+                <span id="biologyValue">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="biologyBar"></div>
+            </div>
+            <div class="progress-control">
+                <input type="number" id="biologyInput" min="0" max="100" placeholder="Enter percentage">
+                <button class="save-note" onclick="updateProgress('biology')">Update</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- NOTES -->
+<section id="notes">
+    <div class="section-title">
+        <h2>📝 My Study Notes</h2>
+        <p>Write anything important you want to remember.</p>
+    </div>
+
+    <div class="card">
+        <textarea id="notesArea" placeholder="Write your important formulas, mistakes, questions, reminders..."></textarea>
+        <button class="save-note" onclick="saveNotes()">💾 Save Notes</button>
+    </div>
+</section>
+
+
+<!-- MOTIVATION -->
+<section>
+    <div class="motivation">
+        <h2>🔥 One Day At A Time</h2>
+        <p id="motivationText">
+            You don't need to finish the entire syllabus today.
+            You only need to win today's study session.
+        </p>
+        <br>
+        <button class="btn primary" onclick="newMotivation()">Give Me Motivation</button>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <p>Built with ❤️ for <strong>Humila</strong></p>
+    <p>NEET Preparation Hub • Study • Revise • Practice • Repeat</p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/mood-arjun-00111/humila-neet-hub" style="color: #38bdf8; text-decoration: none;">mood-arjun-00111/humila-neet-hub</a></p>
+</footer>
+
+
+<script>
+
+    /* =========================
+       TASK SYSTEM
+    ========================= */
+
+    let tasks = JSON.parse(localStorage.getItem("humilaTasks")) || [];
+
+    function saveTasks() {
+        localStorage.setItem("humilaTasks", JSON.stringify(tasks));
+    }
+
+    function renderTasks() {
+        const list = document.getElementById("taskList");
+        list.innerHTML = "";
+
+        tasks.forEach((task, index) => {
+            const li = document.createElement("li");
+            const text = document.createElement("span");
+            text.textContent = task;
+
+            const deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "✕";
+            deleteButton.onclick = function() {
+                tasks.splice(index, 1);
+                saveTasks();
+                renderTasks();
+            };
+
+            li.appendChild(text);
+            li.appendChild(deleteButton);
+            list.appendChild(li);
+        });
+
+        document.getElementById("completedTasks").textContent = tasks.length;
+    }
+
+    function addTask() {
+        const input = document.getElementById("taskInput");
+        const task = input.value.trim();
+
+        if (task === "") {
+            alert("Please enter a study task.");
+            return;
+        }
+
+        tasks.push(task);
+        saveTasks();
+        input.value = "";
+        renderTasks();
+    }
+
+    document.getElementById("taskInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            addTask();
+        }
+    });
+
+
+    /* =========================
+       TIMER
+    ========================= */
+
+    let timeLeft = 25 * 60;
+    let timerInterval = null;
+
+    function updateTimerDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById("timerDisplay").textContent =
+            String(minutes).padStart(2, "0") + ":" +
+            String(seconds).padStart(2, "0");
+    }
+
+    function startTimer() {
+        if (timerInterval !== null) return;
+
+        timerInterval = setInterval(function() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateTimerDisplay();
+            } else {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                alert("🎉 Focus session completed! Take a short break.");
+
+                let sessions = Number(localStorage.getItem("humilaSessions")) || 0;
+                sessions++;
+                localStorage.setItem("humilaSessions", sessions);
+                updateDashboard();
+            }
+        }, 1000);
+    }
+
+    function pauseTimer() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timeLeft = 25 * 60;
+        updateTimerDisplay();
+    }
+
+
+    /* =========================
+       PROGRESS SYSTEM
+    ========================= */
+
+    let progress = JSON.parse(localStorage.getItem("humilaProgress")) || {
+        physics: 0,
+        chemistry: 0,
+        biology: 0
+    };
+
+    function updateProgress(subject) {
+        const input = document.getElementById(subject + "Input");
+        let value = Number(input.value);
+
+        if (value < 0) value = 0;
+        if (value > 100) value = 100;
+
+        progress[subject] = value;
+        localStorage.setItem("humilaProgress", JSON.stringify(progress));
+        renderProgress();
+
+        input.value = "";
+    }
+
+    function renderProgress() {
+        document.getElementById("physicsValue").textContent = progress.physics + "%";
+        document.getElementById("chemistryValue").textContent = progress.chemistry + "%";
+        document.getElementById("biologyValue").textContent = progress.biology + "%";
+
+        document.getElementById("physicsBar").style.width = progress.physics + "%";
+        document.getElementById("chemistryBar").style.width = progress.chemistry + "%";
+        document.getElementById("biologyBar").style.width = progress.biology + "%";
+
+        const overall = Math.round(
+            (progress.physics + progress.chemistry + progress.biology) / 3
+        );
+
+        document.getElementById("overallProgress").textContent = overall + "%";
+        document.getElementById("bioProgress").textContent = progress.biology + "%";
+    }
+
+
+    /* =========================
+       NOTES
+    ========================= */
+
+    const notesArea = document.getElementById("notesArea");
+    notesArea.value = localStorage.getItem("humilaNotes") || "";
+
+    function saveNotes() {
+        localStorage.setItem("humilaNotes", notesArea.value);
+        alert("✅ Notes saved successfully!");
+    }
+
+
+    /* =========================
+       MOTIVATION
+    ========================= */
+
+    const motivations = [
+        "Small progress every day becomes massive progress over time.",
+        "Don't chase perfect study days. Build consistent ones.",
+        "One chapter understood deeply is better than five chapters rushed.",
+        "Study now so your future self can thank you.",
+        "Focus on the next question, not the entire syllabus.",
+        "Consistency beats motivation.",
+        "You don't need to be perfect. You need to keep moving.",
+        "Every question you solve brings you closer to your goal.",
+        "Your effort today shapes your tomorrow.",
+        "Success is the sum of small efforts repeated day in and day out."
+    ];
+
+    function newMotivation() {
+        const random = Math.floor(Math.random() * motivations.length);
+        document.getElementById("motivationText").textContent = motivations[random];
+    }
+
+
+    /* =========================
+       DASHBOARD
+    ========================= */
+
+    function updateDashboard() {
+        const sessions = Number(localStorage.getItem("humilaSessions")) || 0;
+        document.getElementById("studySessions").textContent = sessions;
+    }
+
+
+    /* =========================
+       THEME TOGGLE
+    ========================= */
+
+    const themeToggle = document.getElementById("themeToggle");
+    const htmlElement = document.documentElement;
+
+    // Check saved theme preference
+    const savedTheme = localStorage.getItem("humilaTheme") || "dark";
+    if (savedTheme === "light") {
+        htmlElement.style.colorScheme = "light";
+        document.body.style.background = "#f8fafc";
+        document.body.style.color = "#0b1120";
+        themeToggle.textContent = "☀️";
+    }
+
+    themeToggle.addEventListener("click", function() {
+        const isDark = htmlElement.style.colorScheme === "dark" || htmlElement.style.colorScheme === "";
+
+        if (isDark) {
+            // Switch to light mode
+            htmlElement.style.colorScheme = "light";
+            document.body.style.background = "#f8fafc";
+            document.body.style.color = "#0b1120";
+            localStorage.setItem("humilaTheme", "light");
+            themeToggle.textContent = "☀️";
+        } else {
+            // Switch to dark mode
+            htmlElement.style.colorScheme = "dark";
+            document.body.style.background = "#0b1120";
+            document.body.style.color = "#f8fafc";
+            localStorage.setItem("humilaTheme", "dark");
+            themeToggle.textContent = "🌙";
+        }
+    });
+
+
+    /* =========================
+       INITIAL LOAD
+    ========================= */
+
+    renderTasks();
+    renderProgress();
+    updateTimerDisplay();
+    updateDashboard();
+
+</script>
+
+</body>
+</html>
